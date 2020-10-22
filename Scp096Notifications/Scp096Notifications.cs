@@ -42,6 +42,7 @@ namespace Scp096Notifications
         {
             if (!Config.IsEnabled) return;
             Singleton = null;
+            Handler = null;
             base.OnDisabled();
 
             // Events
