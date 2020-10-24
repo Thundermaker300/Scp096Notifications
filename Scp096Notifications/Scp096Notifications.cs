@@ -2,6 +2,7 @@
 using Exiled.API.Features;
 using Exiled.Events;
 using MEC;
+using SCPSL.Halloween;
 using System;
 using System.Collections.Generic;
 using System.Linq;
