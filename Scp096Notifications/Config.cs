@@ -1,10 +1,6 @@
 ﻿using Exiled.API.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scp096Notifications
 {
@@ -19,5 +15,19 @@ namespace Scp096Notifications
         public string Scp096SeenMessage { get; set; } = "You are a target of SCP-096!";
         [Description("The message to show SCP-096 when he gains a new target.")]
         public string Scp096NewTargetMessage { get; set; } = "<b>{name}</b> has viewed your face! They are a <b>{class}</b>.";
+
+        [Description("Change the display strings of each class (applies to SCP-096'S notification).")]
+        public Dictionary<RoleType, string> RoleStrings { get; set; } = new Dictionary<RoleType, string>
+        {
+            [RoleType.ClassD] = "Class-D Personnel",
+            [RoleType.Scientist] = "Scientist",
+            [RoleType.FacilityGuard] = "Facility Guard",
+            [RoleType.NtfCadet] = "NTF Cadet",
+            [RoleType.NtfLieutenant] = "NTF Lieutenant",
+            [RoleType.NtfScientist] = "NTF Scientist",
+            [RoleType.NtfCommander] = "NTF Commander",
+            [RoleType.ChaosInsurgency] = "Chaos Insurgency",
+            [RoleType.Tutorial] = "Tutorial",
+        };
     }
 }
