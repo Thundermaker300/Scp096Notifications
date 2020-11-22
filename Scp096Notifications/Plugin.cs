@@ -12,9 +12,9 @@ namespace Scp096Notifications
 
         public override string Author { get; } = "Thundermaker300";
 
-        public override Version Version { get; } = new Version(1, 0, 3);
+        public override Version Version { get; } = new Version(1, 0, 4);
 
-        public override Version RequiredExiledVersion { get; } = new Version(2, 1, 11);
+        public override Version RequiredExiledVersion { get; } = new Version(2, 1, 18);
 
         public override PluginPriority Priority => PluginPriority.Low;
 
