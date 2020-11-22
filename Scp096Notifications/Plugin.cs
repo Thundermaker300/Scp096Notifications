@@ -6,7 +6,7 @@ using Events = Exiled.Events.Handlers;
 
 namespace Scp096Notifications
 {
-    public class Scp096Notifications : Plugin<Config>
+    public class Plugin : Plugin<Config>
     {
         public override string Name { get; } = "Scp096Notifications";
 
@@ -18,14 +18,15 @@ namespace Scp096Notifications
 
         public override PluginPriority Priority => PluginPriority.Low;
 
-        public static Scp096Notifications Singleton;
+        public static Plugin Singleton;
         private static EventHandlers Handler;
 
         public override void OnEnabled()
         {
+
             if (!Config.IsEnabled) return;
-            Singleton = new Scp096Notifications();
-            Handler = new EventHandlers();
+            Singleton = new Plugin();
+            Handler = new EventHandlers(this);
             base.OnEnabled();
 
             // Events
@@ -34,6 +35,7 @@ namespace Scp096Notifications
 
         public override void OnDisabled()
         {
+
             if (!Config.IsEnabled) return;
             Singleton = null;
             Handler = null;
