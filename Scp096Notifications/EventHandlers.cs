@@ -25,9 +25,6 @@ namespace Scp096Notifications
             }
         }
 
-        public void ShowMessage(Player Ply, string Message, float Duration = 3)
-        {
-            Ply.ShowHint(Message, Duration);
-        }
+        public void ShowMessage(Player Ply, string Message, float Duration = 3) => Ply.ShowHint(Message, Duration);
     }
 }

@@ -10,7 +10,7 @@ namespace Scp096Notifications
     {
         public override string Name { get; } = "Scp096Notifications";
 
-        public override string Author { get; } = "Thundermaker300";
+        public override string Author { get; } = "Thunder";
 
         public override Version Version { get; } = new Version(1, 0, 4);
 
