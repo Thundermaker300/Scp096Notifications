@@ -5,19 +5,22 @@ using System.Collections.Generic;
 
 namespace Scp096Notifications
 {
-    class EventHandlers
+    public class EventHandlers
     {
+        
+        private Plugin plugin;
+        public EventHandlers(Plugin plugin) { this.plugin = plugin; }
         public void Scp096AddingTarget(AddingTargetEventArgs ev)
         {
             if (ev.Target.Team == Team.SCP) return;
-            Config Settings = Scp096Notifications.Singleton.Config;
-            if (Settings.Enable096SeenMessage)
+            
+            if (plugin.Config.Enable096SeenMessage)
             {
-                ShowMessage(ev.Target, Settings.Scp096SeenMessage, 5f);
+                ShowMessage(ev.Target, plugin.Config.Scp096SeenMessage, 5f);
             }
-            if (Settings.Enable096NewTargetMessage)
+            if (plugin.Config.Enable096NewTargetMessage)
             {
-                string message = Settings.Scp096NewTargetMessage.Replace("{name}", ev.Target.Nickname).Replace("{class}", $"<color={ev.Target.RoleColor.ToHex()}>{Scp096Notifications.Singleton.Config.RoleStrings[ev.Target.Role]}</color>");
+                string message = plugin.Config.Scp096NewTargetMessage.Replace("{name}", ev.Target.Nickname).Replace("{class}", $"<color={ev.Target.RoleColor.ToHex()}>{plugin.Config.RoleStrings[ev.Target.Role]}</color>");
                 ShowMessage(ev.Scp096, message, 5f);
             }
         }
