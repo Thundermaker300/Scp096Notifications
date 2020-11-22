@@ -25,7 +25,6 @@ namespace Scp096Notifications
         {
 
             if (!Config.IsEnabled) return;
-            Log.Info($"{Name} plugin has been enabled" + Author);
             Singleton = new Plugin();
             Handler = new EventHandlers(this);
             base.OnEnabled();
