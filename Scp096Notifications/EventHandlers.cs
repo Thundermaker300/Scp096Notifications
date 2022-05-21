@@ -12,7 +12,7 @@ namespace Scp096Notifications
         public EventHandlers(Plugin plugin) { this.plugin = plugin; }
         public void Scp096AddingTarget(AddingTargetEventArgs ev)
         {
-            if (ev.Target.Role.Team == Team.SCP) return;
+            if (ev.Target.Role.Team == Team.SCP || !ev.IsAllowed) return;
             
             if (plugin.Config.Enable096SeenMessage)
             {

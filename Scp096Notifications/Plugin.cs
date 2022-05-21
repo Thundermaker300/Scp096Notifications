@@ -23,26 +23,23 @@ namespace Scp096Notifications
 
         public override void OnEnabled()
         {
-
-            if (!Config.IsEnabled) return;
             Singleton = this;
             Handler = new EventHandlers(this);
-            base.OnEnabled();
 
             // Events
             Events.Scp096.AddingTarget += Handler.Scp096AddingTarget;
+
+            base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
+            // Events
+            Events.Scp096.AddingTarget -= Handler.Scp096AddingTarget;
 
-            if (!Config.IsEnabled) return;
             Singleton = null;
             Handler = null;
             base.OnDisabled();
-
-            // Events
-            Events.Scp096.AddingTarget -= Handler.Scp096AddingTarget;
         }
     }
 }
