@@ -12,7 +12,7 @@ namespace Scp096Notifications
         public EventHandlers(Plugin plugin) { this.plugin = plugin; }
         public void Scp096AddingTarget(AddingTargetEventArgs ev)
         {
-            if (ev.Target.Team == Team.SCP) return;
+            if (ev.Target.Role.Team == Team.SCP) return;
             
             if (plugin.Config.Enable096SeenMessage)
             {
@@ -20,7 +20,7 @@ namespace Scp096Notifications
             }
             if (plugin.Config.Enable096NewTargetMessage)
             {
-                string message = plugin.Config.Scp096NewTargetMessage.Replace("{name}", ev.Target.Nickname).Replace("{class}", $"<color={ev.Target.RoleColor.ToHex()}>{plugin.Config.RoleStrings[ev.Target.Role]}</color>");
+                string message = plugin.Config.Scp096NewTargetMessage.Replace("{name}", ev.Target.Nickname).Replace("{class}", $"<color={ev.Target.Role.Color.ToHex()}>{plugin.Config.RoleStrings[ev.Target.Role]}</color>");
                 ShowMessage(ev.Scp096, message, 5f);
             }
         }
