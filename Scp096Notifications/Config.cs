@@ -15,6 +15,11 @@ namespace Scp096Notifications
         public string Scp096SeenMessage { get; set; } = "You are a target of SCP-096!";
         [Description("The message to show SCP-096 when he gains a new target.")]
         public string Scp096NewTargetMessage { get; set; } = "<b>{name}</b> has viewed your face! They are a <b>{class}</b>.";
+        [Description("The amount of time to show each individual notification.")]
+        public ushort NotifDuration { get; set; } = 5;
+
+        [Description("Determines whether or not to use hints for notifications. Hints may cause conflicts with other plugins. If set to false, broadcasts will be used instead.")]
+        public bool UseHints { get; set; } = true;
 
         [Description("Change the display strings of each class (applies to SCP-096'S notification).")]
         public Dictionary<RoleType, string> RoleStrings { get; set; } = new Dictionary<RoleType, string>

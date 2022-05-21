@@ -16,15 +16,21 @@ namespace Scp096Notifications
             
             if (plugin.Config.Enable096SeenMessage)
             {
-                ShowMessage(ev.Target, plugin.Config.Scp096SeenMessage, 5f);
+                ShowMessage(ev.Target, plugin.Config.Scp096SeenMessage, plugin.Config.NotifDuration);
             }
             if (plugin.Config.Enable096NewTargetMessage)
             {
-                string message = plugin.Config.Scp096NewTargetMessage.Replace("{name}", ev.Target.Nickname).Replace("{class}", $"<color={ev.Target.Role.Color.ToHex()}>{plugin.Config.RoleStrings[ev.Target.Role]}</color>");
-                ShowMessage(ev.Scp096, message, 5f);
+                string message = plugin.Config.Scp096NewTargetMessage.Replace("{name}", ev.Target.Nickname).Replace("{class}", $"<color={ev.Target.Role.Color.ToHex()}>{plugin.Config.RoleStrings?[ev.Target.Role] ?? "UNKNOWN"}</color>");
+                ShowMessage(ev.Scp096, message, plugin.Config.NotifDuration);
             }
         }
 
-        public void ShowMessage(Player Ply, string Message, float Duration = 3) => Ply.ShowHint(Message, Duration);
+        public void ShowMessage(Player Ply, string Message, ushort Duration = 3)
+        {
+            if (plugin.Config.UseHints)
+                Ply.ShowHint(Message, Duration);
+            else
+                Ply.Broadcast(Duration, Message, shouldClearPrevious: true);
+        }
     }
 }
